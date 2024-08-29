@@ -33,9 +33,13 @@ def escolhe_opcao():
 
     def cadastra_aluno():
         exibir_subtitulo('Cadastrar aluno')
+        
         nome_aluno = input(' Digite o nome do aluno que deseja cadastrar: ')
-        alunos.append(nome_aluno)
+        materia_aluno = input( f'Digite a discplina que {nome_aluno} irá cursar: ')
+        dados_do_aluno = {'nome':nome_aluno, 'matéria':materia_aluno, 'ativo':True}
+        alunos.append(dados_do_aluno)
         print(f' O aluno {nome_aluno} foi cadastrado com sucesso\n')
+        
         retorna_menu()
         
     
