@@ -23,7 +23,7 @@ def mostra_escolhas():
 def escolhe_opcao():
 
     def exibir_subtitulo(texto):
-        os.system('clear')
+        os.system('cls')
         print(texto)
         print('')
     
@@ -51,9 +51,23 @@ def escolhe_opcao():
             ativo = aluno['ativo']
             print(f' - {nome_aluno} | {materia_aluno} | {ativo}')
         retorna_menu()
+
+    def ativar_estudante():
+        exibir_subtitulo('Ativar aluno')
+        nome_aluno = input('Digite o nome do aluno que deseja ativar:')
+        aluno_encontrado = False
+
+        for aluno in alunos:
+            if nome_aluno == aluno['nome']:
+                aluno_encontrado = True
+                aluno['ativo'] = not aluno['ativo']
+                mensagem = f'A matricula de {nome_aluno} foi ativado com sucesso' if aluno['ativo'] else f'A matricula {nome_aluno} foi desativada'
+                print(mensagem)
+        if not aluno_encontrado:
+            print('Não encontrado')    
     
     def finalizar_programa():
-        os.system('clear')
+        os.system('cls')
         print('Finalizando o programa\n')
     
     def opcao_invalida():
