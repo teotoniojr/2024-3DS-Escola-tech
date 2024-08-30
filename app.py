@@ -23,9 +23,11 @@ def mostra_escolhas():
 def escolhe_opcao():
 
     def exibir_subtitulo(texto):
-        os.system('cls')
+        os.system('clear')
+        linha = '-' * 65
+        print(linha)
         print(texto)
-        print('')
+        print(linha)
     
     def retorna_menu():
         input(' Digite uma tecla para voltar ao menu principal ')
@@ -48,8 +50,10 @@ def escolhe_opcao():
         for aluno in alunos:
             nome_aluno = aluno['nome']
             materia_aluno = aluno['matéria']
-            ativo = aluno['ativo']
-            print(f' - {nome_aluno} | {materia_aluno} | {ativo}')
+            ativo = 'Matriculado' if aluno['ativo'] else 'Sem matricula'
+            print(f' - {nome_aluno.ljust(20)} | {materia_aluno.ljust(20)} | {ativo}')
+        
+        print()
         retorna_menu()
 
     def ativar_estudante():
@@ -64,10 +68,11 @@ def escolhe_opcao():
                 mensagem = f'A matricula de {nome_aluno} foi ativado com sucesso' if aluno['ativo'] else f'A matricula {nome_aluno} foi desativada'
                 print(mensagem)
         if not aluno_encontrado:
-            print('Não encontrado')    
+            print('Não encontrado')
+        retorna_menu()    
     
     def finalizar_programa():
-        os.system('cls')
+        os.system('clear')
         print('Finalizando o programa\n')
     
     def opcao_invalida():
@@ -83,7 +88,7 @@ def escolhe_opcao():
         elif opcao_escolhida == 2:
             listar_alunos()
         elif opcao_escolhida == 3:
-            print('Você escolheu Ativar matricula')
+            ativar_estudante()
         elif opcao_escolhida == 4:
             finalizar_programa()
         else:
